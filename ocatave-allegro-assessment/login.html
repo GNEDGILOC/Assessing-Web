@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+		img {
+            width: 100px; 
+			height: auto;
+			margin-top: 10px; 
+			margin-right: 20px; 
+			margin-bottom: 400px; 
+			margin-left: 50px; 
+        }
+
+        form {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+			margin-top: 10px; 
+			margin-right: 20px; 
+			margin-bottom: -200px; 
+			margin-left: -255px; 
+        }
+
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: blue;
+            color: #fff;
+            cursor: pointer;
+			padding: 20px;
+			border-radius: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+	<img src="img/logo.png" alt="Register Image">
+
+<form action="login.php" method="post" id="loginForm">
+    <label for="account">Account:</label>
+    <input type="text" id="account" name="account" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <p>Still not registered? <a href="register.html">Click here</a> to register.</p>
+    <input type="submit" value="Login">
+</form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f4f4f4;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+
+
+		img {
+            width: 100px; 
+			height: auto;
+			margin-top: 10px; 
+			margin-right: 20px; 
+			margin-bottom: 400px; 
+			margin-left: 50px; 
+        }
+
+        form {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			margin-bottom: -100px;
+			margin-top: 100px;
+			margin-left: -250px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+			border-radius: 40px;
+			padding: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+	<img src="img/logoregis.png" alt="Register Image">
+
+<form action="register.php" method="post" id="registerForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="account">Account:</label>
+    <input type="text" id="account" name="account" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <input type="submit" value="Register">
+</form>
+
+<script>
+    
+    document.getElementById("registerForm").addEventListener("submit", function (event) {
+        
+        var password = document.getElementById("password").value;
+        if (password.length < 6) {
+            alert("Password at least 6 digits");
+            event.preventDefault();
+        }
+    });
+</script>
+
+</body>
+</html>

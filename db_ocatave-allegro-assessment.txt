@@ -1,0 +1,81 @@
+CREATE TABLE customer (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    account VARCHAR(255),
+    password VARCHAR(255)
+);
+
+(Priority Areas of Impact)
+CREATE TABLE paoi (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    priority int(1),
+    impactarea VARCHAR(255)
+);
+
+DELETE FROM `paoi`
+WHERE id = 2;
+SELECT * FROM `paoi`;
+
+CREATE TABLE paoi (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    priority int(1),
+    impactarea VARCHAR(255),
+    low int(1),
+    moderate int(2), 
+    high int(2),
+    score int(2)
+);
+
+(information asset profile)
+CREATE TABLE iap (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    priority int(1),
+    impactarea VARCHAR(255)
+);
+
+CREATE TABLE studentprofile (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    formname VARCHAR(255),
+    tablecontent VARCHAR(255), 
+    descriptions VARCHAR(1000)
+);
+
+(information asset containers)
+CREATE TABLE iac (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    locationcontainer VARCHAR(255),
+    external_description VARCHAR(1000), 
+		internal_description VARCHAR(1000), 
+    info_owner VARCHAR(1000)
+);
+
+(Area of Concern)
+CREATE TABLE aoc (
+    refnum INT AUTO_INCREMENT PRIMARY KEY,
+    concern_area VARCHAR(1000)
+);
+
+(Threat Scenarios)
+CREATE TABLE ts (
+    refnum INT AUTO_INCREMENT PRIMARY KEY,
+    threat_scenarios VARCHAR(1000)
+);
+
+(Risk Consequences)
+CREATE TABLE rc (
+    refnum INT AUTO_INCREMENT PRIMARY KEY,
+    risk_consequence VARCHAR(1000)
+);
+
+(Mitigation Approach)
+CREATE TABLE ma (
+    refnum INT AUTO_INCREMENT PRIMARY KEY,
+    action VARCHAR(255),
+    mitigation_approach VARCHAR(1000)
+);
+
+
+
+
+
+

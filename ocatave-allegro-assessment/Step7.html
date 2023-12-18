@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="author" content="Colin" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <title>Step7</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        table {
+            width: 50%;
+            margin: auto;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #744caf;
+            color: white;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"], input[type="button"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover, input[type="button"]:hover {
+            background-color: #a04545;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container px-4">
+            <a class="navbar-brand" href="Step6.html">Back</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="choosingbox.html">Steps</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h2 style="margin-top: 50px;">Step7:</h2>
+    <p>Analyze Risks</p>
+
+    <h3>Relative Risk Matrix</h3>
+
+<table class="custom-table">
+    <tr>
+        <th class="merged-cell" colspan="3" style="background-color: #b4b0b0;">Risk Score Range</th>
+    </tr>
+    <tr>    
+        <th>Category 1</th>
+        <th>Category 2</th>
+        <th>Category 3</th>
+    </tr>
+    <tr>
+        <td>&gt;30</td>
+        <td>15 ~ 20</td>
+        <td>0 ~ 20</td>
+    </tr>
+    <tr>
+        <td>High</td>
+        <td>Medium</td>
+        <td>Low</td>
+    </tr>
+    <tr>
+        <td>Mitigate</td>
+        <td>Defer</td>
+        <td>Accept</td>
+    </tr>
+</table>
+    <form action="Step7.php" method="post">
+        <!-- <label for="priority">Priority:</label>
+        <input type="number" id="priority" name="priority" required> -->
+
+
+        <label for="name">Impact Area:</label>
+        <select type="text" id="impactarea" name="impactarea" required>
+            <option value="Reputation and Consumer Trust">Reputation and Consumer Trust</option>
+            <option value="Finance">Finance</option>
+            <option value="Productivity">Productivity</option>
+            <option value="Safety and Health">Safety and Health</option>
+            <option value="Fines and Legal Sanctions">Fines and Legal Sanctions</option></select>
+
+            <label for="moderate">Moderate:</label>
+            <input type="number" id="moderate" name="moderate" required>
+        <input type="submit" value="Submit">
+    </form>
+
+
+  
+
+    <input type="button" value="View Table" style="height: 100px; width:150px; margin-left: 675px;" onclick="viewDatabase()">
+    <div id="databaseContent"></div>
+    <script>
+        function viewDatabase() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+    
+                    document.getElementById("databaseContent").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "viewstep7database.php", true); 
+            xhttp.send();
+        }
+    </script>
+    <button id="nextButton" style="margin-left:1300px; background-color: aqua; width: 150px; height: auto;" onclick="window.location.href='Step8.html'">Next Step</button>
+</body>
+</html>

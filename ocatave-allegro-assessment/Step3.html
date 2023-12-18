@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="" />
+  <meta name="author" content="Colin" />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link href="css/styles.css" rel="stylesheet" />
+  <title>Step3</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      margin: 20px 0;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    h2, p {
+      margin-left: 30px;
+    }
+
+    form {
+      max-width: 400px;
+      margin-left: 500px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 8px;
+    }
+
+    input {
+      padding: 10px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .confirmation {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .confirmation button {
+      margin-right: 10px;
+    }
+    
+    #showDataBtn {
+            background-color: #3498db;
+            width: 300px;
+            height: 50px;
+            color: #fff;
+            cursor: pointer;
+        }
+  </style>
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container px-4">
+        <a class="navbar-brand" href="Step2.html">Back</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="choosingbox.html">Steps</a></li>
+                <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="">About</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <h2 style="margin-top: 50px;">Step3:</h2>
+  <p>Identify Information Asset Containers</p>
+
+  <form id="dataForm" action="Step3.php" method="post" onsubmit="return addRow();">
+    <label for="location">Location Container:</label>
+    <input type="text" id="location" name="location" required>
+
+    <label for="external_description">External Description:</label>
+    <input type="text" id="external_description" name="external_description" required>
+
+    <label for="internal_description">Internal Description:</label>
+    <input type="text" id="internal_description" name="internal_description" required>
+
+    <label for="owner">Info Owner:</label>
+    <input type="text" id="owner" name="owner" required>
+
+    <button type="button" onclick="showConfirmation()">Add</button>
+    <div class="confirmation">
+        <label for="Sure">Are you sure? </label>
+      <button type="button" onclick="confirmAdd()">Yes</button>
+      <button type="button" onclick="cancelConfirmation()">Cancel</button>
+    </div>
+  </form>
+
+
+<button id="showDataBtn">Show database</button>
+
+<div id="dataContainer"></div>
+
+  <script>
+    function addRow() {
+      document.querySelector('.confirmation').style.display = 'block';
+      return false;
+    }
+
+    function showConfirmation() {
+      document.querySelector('button[type="button"]').style.display = 'none';
+      document.querySelector('.confirmation').style.display = 'block';
+    }
+
+    function confirmAdd() {
+      document.querySelector('.confirmation').style.display = 'none';
+      document.getElementById('dataForm').submit();
+    }
+
+    function deleteRow(btn) {
+      var row = btn.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+    }
+
+    function cancelConfirmation() {
+      document.querySelector('.confirmation').style.display = 'none';
+      document.querySelector('button[type="button"]').style.display = 'block';
+    }
+
+    document.getElementById('showDataBtn').addEventListener('click', function() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            document.getElementById('dataContainer').innerHTML = xhr.responseText;
+        }
+    };
+    xhr.open('GET', 'Step3.php?action=showData', true);
+    xhr.send();
+});
+  </script>
+  <button id="nextButton" style="margin-left:1300px; background-color: aqua; width: 150px; height: auto;" onclick="window.location.href='Step4.html'">Next Step</button>
+</body>
+</html>
